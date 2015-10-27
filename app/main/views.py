@@ -51,7 +51,16 @@ class monitorList(Resource):
 
     def get(self):
         records = Monitor.query.limit(10)
-        return to_json_list(records)
+        temp = []
+        for record in records:
+            result = {}
+            result['co2'] = record.CO2
+            result['pm2_5'] = record.pm2_5
+            result['humidity'] = record.humidity
+            result['temperature'] = record.temperature
+            result['mac'] = record.mac
+            temp.append(result)
+        return temp
 
     def post(self):
         parser = reqparse.RequestParser()
