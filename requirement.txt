@@ -4,3 +4,4 @@ Flask-Script==0.6.6
 Flask-RESTful
 MySQL-python
 SQLAlchemy
+uwsgi
