@@ -70,16 +70,20 @@ class monitorList(Resource):
         args = parser.parse_args(strict=True)
         if args['data'] is None:
             return {"erro": "no data"}
-        buf = args['data'].split(' ')
-        if len(buf) == 28:
-            result = paser(buf)
         else:
-            return {"error": "data error"}
-        args['time'] = time.strftime(
-            '%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-        new_record = Monitor(args['mac'], result['pm2_5'],
-                             result['CO2'], result['temperature'],
-                             result['humidity'], args['time'])
-        db.session.add(new_record)
-        db.session.commit()
-        return {"status": "0k"}, 200
+            buf = args['data'].split(' ')
+            if len(buf) == 28:
+                result = paser(buf)
+                args['time'] = time.strftime(
+                    '%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+                new_record = Monitor(args['mac'], result['pm2_5'],
+                                     result['CO2'], result['temperature'],
+                                     result['humidity'], args['time'])
+                try:
+                    db.session.add(new_record)
+                    db.session.commit()
+                    return {"status": "0k"}, 200
+                except:
+                    print "wrong data"
+            else:
+                return {"error": "data error"}

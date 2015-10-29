@@ -6,7 +6,7 @@ from . import db
 class Monitor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.String(255), unique=False)
-    mac = db.Column(db.String(255), unique=True)
+    mac = db.Column(db.String(255))
     pm2_5 = db.Column(db.String(255))
     CO2 = db.Column(db.String(255))
     temperature = db.Column(db.String(255))
