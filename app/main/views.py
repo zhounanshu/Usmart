@@ -59,6 +59,7 @@ class monitorList(Resource):
             result['humidity'] = record.humidity
             result['temperature'] = record.temperature
             result['mac'] = record.mac
+            result['time'] = record.time
             temp.append(result)
         return temp
 
