@@ -68,7 +68,7 @@ class monitorList(Resource):
         parser.add_argument('mac', type=str)
         parser.add_argument('data', type=str)
         args = parser.parse_args(strict=True)
-        if args is None:
+        if args['data'] is None:
             return {"erro": "no data"}
         buf = args['data'].split(' ')
         if len(buf) == 28:
