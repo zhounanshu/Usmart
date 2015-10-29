@@ -50,7 +50,7 @@ class monitorResource(Resource):
 class monitorList(Resource):
 
     def get(self):
-        records = Monitor.query.limit(10)
+        records = Monitor.query.order_by(Monitor.time.desc()).limit(10).all()
         temp = []
         for record in records:
             result = {}
