@@ -14,5 +14,5 @@ def paser(args):
     result['CO2'] = int(record[3], 16)
     result['temperature'] = int(record[7], 16) * 0.1
     result['humidity'] = int(record[8], 16) * 0.1
+    result['tvoc'] = int(record[5], 16)
     return result
-

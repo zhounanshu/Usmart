@@ -11,11 +11,13 @@ class Monitor(db.Model):
     CO2 = db.Column(db.String(255))
     temperature = db.Column(db.String(255))
     humidity = db.Column(db.String(255))
+    tvoc = db.Column(db.String(255))
 
-    def __init__(self, mac, pm2_5, CO2, temperature, humidity, time):
+    def __init__(self, mac, pm2_5, CO2, temperature, humidity, time, tvoc):
         self.mac = mac
         self.pm2_5 = pm2_5
         self.CO2 = CO2
         self.temperature = temperature
         self.humidity = humidity
         self.time = time
+        self.tvoc = tvoc

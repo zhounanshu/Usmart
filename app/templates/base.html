@@ -6,7 +6,7 @@
     <title>OminiData{% block title %}{% endblock %}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/bootstrap-table.min.js"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico')}}">
@@ -16,47 +16,39 @@
 </head>
 
 <body>
-    {% block navbar %}
     <div class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
-            <button class="navbar-toggle">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">OminiData</a>
-            <div class="nav-collapse">
-                {% block navbar_right %}
-                <ul class="nav navbar-nav pull-right">
-                    {% if not session.logged_in %}
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Signup</a></li>
-                    {% else %}
-                    <li><a href="#">Logout</a></li>
-                    {% endif %}
-                </ul>
-                {% endblock %}
-            </div>
+            <a class="navbar-brand" href="#">OminiData</a>
+            <ul class="nav navbar-nav ">
+                <li class="activate"><a href="/">首页</a></li>
+                <li><a href="#">统计</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+            {% block Login %}
+            <ul class="nav navbar-nav pull-right">
+                {% if not session.logged_in %}
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Signup</a></li>
+                {% else %}
+                <li><a href="#">Logout</a></li>
+                {% endif %}
+            </ul>
+            {% endblock %}
         </div>
     </div>
-    {% endblock %}
-    <p>
-        <hr>
-        <hr>
-        <hr>
-    </p>
-    <!--tabele -->
+    <p><hr><hr></p>
     <div class="bs-docs-header" id="content">
         <div class="container">
             <table id="table" data-toggle="table" data-url='/v1/mobile' data-height="600" data-pagination="true" data-search="true">
                 <thead>
                     <tr>
-                        <th data-field="mac" data-align='center' data-valign='middle'>MAC</th>
-                        <th data-field="time" data-align='center' data-valign='middle'>时间</th>
-                        <th data-field="temperature" data-align='center' data-valign='middle'>温度(单位: ℃)</th>
-                        <th data-field="humidity" data-align='center' data-valign='middle'>湿度(单位: %RH)</th>
-                        <th data-field="pm2_5" data-align='center' data-valign='middle'>pm2.5(单位: ug/m3)</th>
-                        <th data-field="co2" data-align='center' data-valign='middle'>CO2(单位: ppm)</th>
+                        <th data-field="mac" data-align='center'>MAC</th>
+                        <th data-field="time" data-align='center'>时间</th>
+                        <th data-field="temperature" data-align='center'>温度(单位: ℃)</th>
+                        <th data-field="humidity" data-align='center'>湿度(单位: %RH)</th>
+                        <th data-field="pm2_5" data-align='center'>PM2.5(单位: ug/m3)</th>
+                        <th data-field="co2" data-align='center'>CO2(单位: ppm)</th>
+                        <th data-field='tvoc' data-align='center'>TVOC(单位: ppm)</th>
                     </tr>
                 </thead>
             </table>

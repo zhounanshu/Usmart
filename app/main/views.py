@@ -60,6 +60,7 @@ class monitorList(Resource):
             result['temperature'] = record.temperature
             result['mac'] = record.mac
             result['time'] = record.time
+            result['tvoc'] = record.tvoc
             temp.append(result)
         return temp
 
@@ -78,7 +79,7 @@ class monitorList(Resource):
                     '%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
                 new_record = Monitor(args['mac'], result['pm2_5'],
                                      result['CO2'], result['temperature'],
-                                     result['humidity'], args['time'])
+                                     result['humidity'], args['time'], result['tvoc'])
                 try:
                     db.session.add(new_record)
                     db.session.commit()
