@@ -5,3 +5,4 @@ Flask-RESTful
 MySQL-python
 SQLAlchemy
 uwsgi
+flask-cors

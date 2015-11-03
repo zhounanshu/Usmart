@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <title>OminiData{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/bootstrap-table.min.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.ico')}}">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/bootstrap-table.min.css">
+    {% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <button class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">OminiData</a>
+            <div class="nav-collapse">
+                {% block navbar_right %}
+                <ul class="nav navbar-nav pull-right">
+                    {% if not session.logged_in %}
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Signup</a></li>
+                    {% else %}
+                    <li><a href="#">Logout</a></li>
+                    {% endif %}
+                </ul>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+    <p>
+        <hr>
+    </p>
+    <p>
+        <hr>
+    </p>
+    <!--tabele -->
+    <div class="bs-docs-header" id="content">
+        <div class="container">
+            <table id="table" data-toggle="table" data-url='/v1/mobile' data-height="600" data-pagination="true" data-search="true">
+                <thead>
+                    <tr>
+                        <th data-field="mac" data-align='center'
+                        data-valign='middle'>MAC</th>
+                        <th data-field="time">时间</th>
+                        <th data-field="temperature">温度/℃</th>
+                        <th data-field="humidity">湿度/%RH</th>
+                        <th data-field="pm2_5">pm2.5/ug/m3</th>
+                        <th data-field="co2">CO2/</th>
+                    </tr>
+                </thead>
+            </table>
+            <script type="text/javascript">
+            var $table = $('#table');
+            $(function() {});
+            </script>
+        </div>
+    </div>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/locale/bootstrap-table-zh-CN.min.js"></script>
+</body>
+
+</html>
+
