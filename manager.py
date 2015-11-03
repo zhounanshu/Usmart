@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from app.models import *
 from app import *
 from flask.ext.cors import CORS
 from flask.ext.script import Manager, Shell, Server
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'production')
 CORS(app)
-
-
 # db.drop_all(app=app)
 # db.create_all(app=app)
 manager = Manager(app)
