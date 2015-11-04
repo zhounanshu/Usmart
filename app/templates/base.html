@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/bootstrap-table.min.css"> {% endblock %}
+    <style type="text/css">
+        #content {
+            padding-top: 100px;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,7 +41,6 @@
             {% endblock %}
         </div>
     </div>
-    <p><hr><hr></p>
     <div class="bs-docs-header" id="content">
         <div class="container">
             <table id="table" data-toggle="table" data-url='/v1/mobile' data-height="600" data-pagination="true" data-search="true">
