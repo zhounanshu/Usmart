@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from flask import Blueprint,send_from_directory
+from flask import Blueprint, send_from_directory
 import os
 from flask import render_template
 from flask.ext.restful import Api
